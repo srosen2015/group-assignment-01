@@ -3,9 +3,14 @@
   <head>
     {% block head %}
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %} - Car Base</title>
+    <title>{% block title %}{% endblock %} - Movie Base</title>
+
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+  <link rel="icon" href="{{ url_for('static', filename='images/reel.png') }}" type="image/x-icon"/>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/reel.png') }}" type="image/x-icon"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <!-- Fontawesome CSS -->
@@ -19,7 +24,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/">
-         <h3>Team Project</h3>
+         <img src="{{ url_for('static', filename='images/title.png') }}"
+          alt="MovieBase" width="150">
        </a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
@@ -35,10 +41,10 @@
             <a class="nav-link" href="/members">Members</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cars">Cars</a>
+            <a class="nav-link" href="/Movies">Movies</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/manufacturers">Manufacturers</a>
+            <a class="nav-link" href="/Actors">Actors</a>
           </li>
         </ul>
       </div>
