@@ -1,0 +1,29 @@
+{% extends "home-base.html" %}
+
+{% block title %}
+Add Movie
+{% endblock %}
+
+{% block head%}
+  {{super()}}
+  <style>
+    body {
+      padding-top: 54px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-tags" aria-hidden="true"></i> Add Movie:</h1>
+   <form action="/movie-directory/add" method="post">
+     <div class="form-group">
+     <label>Title</label>
+     <input class="form-control" type="text" name="title" placeholder="Movie Title" required="true">
+  </div>
+    <label>Description</label>
+    <textarea class="form-control" name="description" placeholder="Movie Description" required="true"></textarea>
+  <button type="submit" class="btn btn-primary">Add Movie</button>
+   </form>
+ </div>
+{% endblock %}
