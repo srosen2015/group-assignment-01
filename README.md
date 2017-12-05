@@ -1,6 +1,8 @@
 # group-assignment-01
 Group Members:
--Sam Rosen, Mike Caffrey , and Christine Ni
++ * Sam Rosen
++ * Mike Caffrey
++ * Christine Ni
 
 Our team project is projected to be a movie database that will consist of two tables with a one to many relationship.
 The first table will be a movie table with a title, director, year, genre, and description columns.
@@ -18,5 +20,5 @@ Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
 
 
-http://github.com - automatic!
+Link to our GitHub
 [GitHub](https://github.com/chrisni123/group-assignment-01)
