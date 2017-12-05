@@ -9,12 +9,12 @@ The first table will be a movie table with a title, director, year, genre, and d
 The second table will be an actor table with name, age, and gender columns
 
 - The Movie Table would look like this
-+ Movie Id| Movie Title | Director | Year | Genre | Description
-+ Content from cell 1 | Content from cell 2
-+ Content in the first column | Content in the second column
++Movie Id | Movie Title | Director | Year | Genre | Description
++---------+-------------+----------+------+-------+----------
++ 1 *Movie Title* |Director| Year |Genre| Description
 
 - The Actor Table would look like this
-+ Actor Id | Actor Name | Age | Gender
++Actor Id | Actor Name | Age | Gender
 + ------------ | -------------
 + Content from cell 1 | Content from cell 2
 + Content in the first column | Content in the second column
