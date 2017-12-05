@@ -1,27 +1,21 @@
-{% extends "home-base.html"%}
-{% block title %}Team Project Members{% endblock %}
-
-{% block head%}
-  {{super()}}
-  <style>
-    body {
-      padding-top: 75px;
-    }
-  </style>
-{% endblock %}
-
-{% block page_content%}
-<h1> Team Members: </h1>
-  <ul>
-    <li>Mike Caffrey</li>
-    <h6><ul> Mike is a senior MIS major at University of Delaware. </ul> </h6>
-<img src="static/images/mike.png" class="img-thumbnail" alt="Responsive image">
-    <li>Sam Rosen</li>
-        <h6><ul> Sam is a junior MIS and Operation Managment double major at University of Delaware. </ul> </h6>
-<img src="static/images/sam.png" class="img-thumbnail" alt="Responsive image">
-    <li>Christine Ni</li>
-      <h6><ul> Christine is a senior MIS major with a concentration in Marketing at University of Delaware. </ul> </h6>
-<img src="static/images/christine.png" class="img-thumbnail" alt="Responsive image">
-  </ul>
+{% extends "home-base.html"%} {% block title %}Team Project Members{% endblock %} {% block head%} {{super()}}
+<style>
+  body {
+    padding-top: 75px;
+  }
+</style>
+{% endblock %} {% block page_content%}
+<h1> <i class="fa fa-user-circle" aria-hidden="true"></i> Team Members: </h1>
+<ul>
+  <li>Mike Caffrey</li>
+  <img src="static/images/mike.png" height="25%" width="25%" class="img-fluid" alt="Responsive image">
+  <h6><ul> Mike is a senior MIS major at University of Delaware. </ul> </h6>
+  <li>Sam Rosen</li>
+  <img src="static/images/sam.png" height="25%" width="25%" class="img-fluid" alt="Responsive image">
+  <h6><ul> Sam is a junior MIS and Operation Managment double major at University of Delaware. </ul> </h6>
+  <li>Christine Ni</li>
+  <img src="static/images/christine.png" height="25%" width="25%" class="img-fluid" alt="Responsive image">
+  <h6><ul> Christine is a senior MIS major with a concentration in Marketing at University of Delaware. </ul> </h6>
+</ul>
 
 {% endblock%}
