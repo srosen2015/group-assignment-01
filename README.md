@@ -1,8 +1,8 @@
 # group-assignment-01
 Group Members:
-Sam Rosen
-Mike Caffrey
-Christine Ni
+-Sam Rosen
+-Mike Caffrey
+-Christine Ni
 
 Our team project is projected to be a movie database that will consist of two tables with a one to many relationship.
 The first table will be a movie table with a title, director, year, genre, and description columns.
