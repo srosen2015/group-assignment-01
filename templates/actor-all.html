@@ -1,0 +1,55 @@
+{% extends "home-base.html" %}
+
+{% block title %}
+All Actors
+{% endblock %}
+
+{% block head%}
+  {{super()}}
+  <style>
+    body {
+      padding-top: 54px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-pencil" aria-hidden="true"></i> Actor Directory</h1>
+   <div class="row bottom-margin">
+     <a href="/actor-directory/add" class="btn btn-primary" role="button" aria-disabeled="true">Add Actor</a>
+   </div>
+{% if actors %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Actor ID</th>
+      <th>Actor Name</th>
+      <th>Age</th>
+      <th>Role</th>
+      <th>Movie</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for actor in actors %}
+  <tr>
+    <th scope="row">{{actor.id}}</th>
+        <td>{{actor.actor_name}}</td>
+        <td>{{actor.age}}</td>
+        <td>{{actor.role}}</td>
+        <td>{{actor.movie.title}}</td>
+        <td>
+          <a href="/actor-directory/edit/{{actor.id}}" class ="btn btn-success" role="button" aria-disabled="true"> Edit</a>
+        </td>
+        <td>
+         <a href="/actor-directory/delete/{{actor.id}}" class ="btn btn-danger" role="button" aria-disabled="true"> Delete</a>
+       </td>
+  </tr>
+   {% endfor %}
+ </tbody>
+</table>
+{% else %}
+<h3>There are no actors in the directory yet.</h3>
+{% endif %}
+</div>
+{% endblock %}

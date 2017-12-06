@@ -13,12 +13,21 @@ def deploy():
     movie3 = movie(title='Moana', description='An adventurous teenager sails out on a daring mission to save her people.')
     movie4 = movie(title='Frozen', description='When their kingdom becomes trapped in perpetual winter, fearless Anna (Kristen Bell) joins forces with mountaineer Kristoff (Jonathan Groff) and his reindeer sidekick to find Annas sister, Snow Queen Elsa (Idina Menzel), and break her icy spell.')
     movie5 = movie(title='Cinderella', description='With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball.')
-
+    jones = Actor(actor_name='', age='86', role='Mufasa', movie = movie1)
+    murphy = Actor(actor_name='', age='56', role='Mushu', movie = movie2)
+    johnson = Actor(actor_name='', age='45', role='Maui', movie = movie3)
+    gat = Actor(actor_name='', age='36', role='Olaf', movie = movie4)
+    madden = Actor(actor_name='', age='31', role='Prince Charming', movie = movie5)
     db.session.add(movie1)
     db.session.add(movie2)
     db.session.add(movie3)
     db.session.add(movie4)
     db.session.add(movie5)
+    db.session.add(jones)
+    db.session.add(murphy)
+    db.session.add(johnson)
+    db.session.add(gat)
+    db.session.add(madde)
     db.session.commit()
 
 
