@@ -17,6 +17,14 @@ class Movie(db.Model):
     title = db.Column(db.String(256))
     description = db.Column(db.Text)
 
+class Course(db.Model):
+    __tablename__ = 'actors'
+    id = db.Column(db.Integer, primary_key=True)
+    actor_name = db.Column(db.String(256))
+    age = db.Column(db.Integer)
+     = db.Column(db.Text)
+    movie_id = db.Column(db.Integer, db.ForeignKey('movie.id'))
+
 @app.route('/')
 def index():
     return render_template('index.html')
