@@ -1,0 +1,54 @@
+{% extends "home-base.html" %}
+
+{% block title %}
+Add Actor
+{% endblock %}
+
+{% block head%}
+  {{super()}}
+  <style>
+    body {
+      padding-top: 54px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-id-badge" aria-hidden="true"></i> Add Actors:</h1>
+   <form action="/actor-directory/add" method="post">
+     <div class="form-group">
+     <label>Actor Name</label>
+     <input class="form-control" type="text" name="name" placeholder="Actor Name" required="true">
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+          <select class="form-control" name="age">
+            {% for i in range(1, 100) %}
+              {% if i == 35 %}
+                <option selected="selected">{{i}}</option>
+              {% else %}
+                <option>{{i}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+             <label>Movie</label>
+             <select class="form-control" name="movie">
+               {% for movie in movies %}
+                   <option>{{movie.title}}</option>
+               {% endfor %}
+             </select>
+           </div>
+           <div class="form-group">
+             Movie not in the list? <a href="/movie/add" class="btn btn-success" role="button" aria-disabled="true">Add Movie</a>
+           </div>
+    <div class="form-group">
+      <label>Role</label>
+      <input class="form-control" type="text" name="role" placeholder="Role" required="true">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Actor</button>
+   </form>
+ </div>
+{% endblock %}

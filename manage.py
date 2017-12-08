@@ -1,5 +1,5 @@
 from flask_script import Manager
-from project import app, db
+from project import app, db, Movie, Actor
 
 manager = Manager(app)
 
@@ -8,26 +8,26 @@ manager = Manager(app)
 def deploy():
     db.drop_all()
     db.create_all()
-    movie1 = movie(title= 'The Lion King', description='Plot: tells the story of Simba, a young lion who is to succeed his father, Mufasa, as King of the Pride Lands; however, after Simbas uncle Scar, murders Mufasa, Simba is manipulated into thinking he was responsible and flees into exile. Upon maturation living with two wastrels, Simba is given some valuable perspective from his childhood friend, Nala, and his shaman, Rafiki, before returning to challenge Scar to end his tyranny and take his place in the Circle of Life as the rightful King.')
-    movie2 = movie(title='Mulan', description='Plot: Fearful that her ailing father will be drafted into the Chinese military, Mulan (Ming-Na Wen) takes his spot -- though, as a girl living under a patriarchal regime, she is technically unqualified to serve.')
-    movie3 = movie(title='Moana', description='An adventurous teenager sails out on a daring mission to save her people.')
-    movie4 = movie(title='Frozen', description='When their kingdom becomes trapped in perpetual winter, fearless Anna (Kristen Bell) joins forces with mountaineer Kristoff (Jonathan Groff) and his reindeer sidekick to find Annas sister, Snow Queen Elsa (Idina Menzel), and break her icy spell.')
-    movie5 = movie(title='Cinderella', description='With a wicked stepmother (Eleanor Audley) and two jealous stepsisters (Rhoda Williams, Lucille Bliss) who keep her enslaved and in rags, Cinderella (Ilene Woods) stands no chance of attending the royal ball.')
-    jones = Actor(actor_name='', age='86', role='Mufasa', movie = movie1)
-    murphy = Actor(actor_name='', age='56', role='Mushu', movie = movie2)
-    johnson = Actor(actor_name='', age='45', role='Maui', movie = movie3)
-    gat = Actor(actor_name='', age='36', role='Olaf', movie = movie4)
-    madden = Actor(actor_name='', age='31', role='Prince Charming', movie = movie5)
+    movie1 = Movie(title= 'Just Go With It', year=2011, genre='Comedy/Romance', description='Plot: His heart recently broken, plastic surgeon Danny Maccabee (Adam Sandler) pretends to be married so he can enjoy future dates with no strings attached. ')
+    movie2 = Movie(title= 'Maleficent', year=2014, genre='Fantasy', description='Plot: As a beautiful young woman of pure heart, Maleficent (Angelina Jolie) has an idyllic life in a forest kingdom. When an invading army threatens the land, Maleficent rises up to become its fiercest protector.')
+    movie3 = Movie(title= 'Mr. & Mrs. Smith', year=2005, genre='Action', description='Plot: John (Brad Pitt) and Jane Smith (Angelina Jolie), a couple in a stagnating marriage, live a deceptively mundane existence. However, each has been hiding a secret from the other: they are assassins working for adversarial agencies.')
+    movie4 = Movie(title= 'Grown Ups', year=2010, genre='Comedy', description='Plot: The death of their childhood basketball coach leads to a reunion for some old friends (Adam Sandler, Kevin James, Chris Rock), who gather at the site of a championship celebration years earlier. Picking up where they left off, the buddies -- with wives and children in tow -- discover why age does not, necessarily, equal maturity.')
+    movie5 = Movie(title= 'Titanic', year=1997, genre='Romance', description='Plot: James Camerons "Titanic" is an epic, action-packed romance set against the ill-fated maiden voyage of the R.M.S. Titanic; the pride and joy of the White Star Line and, at the time, the largest moving object ever built. She was the most luxurious liner of her era -- the ""ship of dreams"" -- which ultimately carried over 1,500 people to their death in the ice cold waters of the North Atlantic in the early hours of April 15, 1912.')
+    sandler = Actor(actor_name='Adam Sandler', age=52, role='Danny Maccabee', movie = movie1)
+    jolie = Actor(actor_name='Angelina Jolie', age=43, role='Maleficent', movie = movie2)
+    pitt = Actor(actor_name='Brad Pitt', age=55, role='John Smith', movie = movie3)
+    rock = Actor(actor_name='Chris Rock', age=52, role='Kurt McKenzie', movie = movie4)
+    dicaprio = Actor(actor_name='Leonardo DiCaprio', age=44, role='Jack Dawson', movie = movie5)
     db.session.add(movie1)
     db.session.add(movie2)
     db.session.add(movie3)
     db.session.add(movie4)
     db.session.add(movie5)
-    db.session.add(jones)
-    db.session.add(murphy)
-    db.session.add(johnson)
-    db.session.add(gat)
-    db.session.add(madde)
+    db.session.add(sandler)
+    db.session.add(jolie)
+    db.session.add(pitt)
+    db.session.add(rock)
+    db.session.add(dicaprio)
     db.session.commit()
 
 

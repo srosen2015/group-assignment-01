@@ -1,0 +1,48 @@
+{% extends "home-base.html"%}
+{% block title %}Edit Movie{% endblock %}
+
+{% block head%}
+  {{super()}}
+  <style>
+    body {
+      padding-top: 54px;
+    }
+  </style>
+{% endblock %}
+
+
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-music" aria-hidden="true"></i> Edit Movie:</h1>
+    <form action="/movie/edit/{{movie.id}}" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="title" placeholder="{{movie.title}}" value="{{movie.title}}" required="true">
+      </div>
+      <div class="form-group">
+        <label>Year</label>
+              <select class="form-control" name="year" placeholder="{{movie.year}}">
+                {% for i in range(1900, 2021) %}
+                  {% if i == movie.year %}
+                    <option selected="selected">{{i}}</option>
+                  {% else %}
+                    <option>{{i}}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+            </div>
+      <div class="form-group">
+        <label>Genre</label>
+              <input class="form-control" type="text" name="genre" placeholder="{{movie.genre}}" value="{{movie.genre}}" required="true">
+            </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="description" placeholder="{{movie.description}}" required="true">{{movie.description}}</textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+{% endblock%}

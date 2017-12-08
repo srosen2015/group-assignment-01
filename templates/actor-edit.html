@@ -1,0 +1,58 @@
+{% extends "home-base.html" %}
+
+{% block title %}
+Edit Actor
+{% endblock %}
+
+{% block head%}
+  {{super()}}
+  <style>
+    body {
+      padding-top: 54px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+   <h1 class="mt-5"><i class="fa fa-id-badge" aria-hidden="true"></i> Edit Actor:</h1>
+   <form action="/actor-directory/edit/{{actor.id}}" method="post">
+     <div class="form-group">
+     <label>Actor Name</label>
+     <input class="form-control" type="text" name="name" placeholder="{{actor.actor_name}}" required="true">
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+          <select class="form-control" name="age" placeholder="{{actor.age}}">
+            {% for i in range(1, 100) %}
+              {% if i == actor.age %}
+                <option selected="selected">{{i}}</option>
+              {% else %}
+                <option>{{i}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+             <label>Movie</label>
+             <select class="form-control" name="movie">
+               {% for movie in movies %}
+                 {% if movie == actor.movie %}
+                   <option selected="selected">{{movie.title}}</option>
+                 {% else %}
+                   <option>{{movie.title}}</option>
+                 {% endif %}
+               {% endfor %}
+             </select>
+           </div>
+           <div class="form-group">
+             Movie not in the list? <a href="/movie/add" class="btn btn-success" role="button" aria-disabled="true">Add Movie</a>
+           </div>
+    <div class="form-group">
+      <label>Role</label>
+      <textarea class="form-control" name="role" value="{{actor.role}}" placeholder="{{actor.role}}" required="true"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+   </form>
+ </div>
+{% endblock %}
