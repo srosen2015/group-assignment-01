@@ -5,8 +5,8 @@ Group Members:
   * Christine Ni
 
 - Our team project is projected to be a movie database that will consist of two tables with a one to many relationship.
-The first table will be a movie table with a title, director, year, genre, and description columns.
-The second table will be an actor table with name, age, and gender columns
+The first table will be a movie table with a title, year, genre, and description columns.
+The second table will be an actor table with name, age, role, and movie title columns.
 
 - The Movie Table would look like this
 
@@ -32,4 +32,3 @@ The second table will be an actor table with name, age, and gender columns
 
 Link to our GitHub
 [GitHub](https://github.com/chrisni123/group-assignment-01)
-
