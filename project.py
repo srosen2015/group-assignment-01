@@ -18,7 +18,7 @@ class Movie(db.Model):
     year = db.Column(db.Integer)
     genre = db.Column(db.String(64))
     description = db.Column(db.String(256))
-    actors = db.relationship('Actor', backref='movie')
+    actors = db.relationship('Actor', backref='movie', cascade="delete")
 
 class Actor(db.Model):
     __tablename__ = 'actors'
@@ -102,6 +102,16 @@ def edit_actor(id):
         movie_title = request.form['movie']
         movie = Movie.query.filter_by(title=movie_title).first()
         actor.movie = movie
+        db.session.commit()
+        return redirect(url_for('show_all_actors'))
+
+@app.route('/actor-directory/delete/<int:id>', methods=['GET', 'POST'])
+def delete_actor(id):
+    actor = Actor.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('actor-delete.html', actor=actor)
+    if request.method == 'POST':
+        db.session.delete(actor)
         db.session.commit()
         return redirect(url_for('show_all_actors'))
 
