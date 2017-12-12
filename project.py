@@ -68,6 +68,24 @@ def edit_movie(id):
         db.session.commit()
         return redirect(url_for('show_all_movies'))
 
+@app.route('/movie/delete/<int:id>', methods=['GET', 'POST'])
+def delete_movie(id):
+    movie = Movie.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        return render_template('movie-delete.html', movie=movie)
+    if request.method == 'POST':
+        db.session.delete(movie)
+        db.session.commit()
+        return redirect(url_for('show_all_movies'))
+
+
+@app.route('/api/movie/<int:id>', methods=['DELETE'])
+def delete_ajax_movie(id):
+    movie = Movie.query.get_or_404(id)
+    db.session.delete(movie)
+    db.session.commit()
+    return jsonify({"id": str(movie.id), "title": movie.title})
+
 @app.route('/actors')
 def show_all_actors():
     actors = Actor.query.all()
