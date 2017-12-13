@@ -1,4 +1,3 @@
-
 import os
 from flask import Flask, session, render_template, request, flash, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -132,9 +131,9 @@ def delete_actor(id):
         db.session.delete(actor)
         db.session.commit()
         return redirect(url_for('show_all_actors'))
-    
-    
-   @app.route('/api/actor/<int:id>', methods=['DELETE'])
+
+
+@app.route('/api/actor/<int:id>', methods=['DELETE'])
 def delete_ajax_actor(id):
     actor =Actor.query.get_or_404(id)
     db.session.delete(actor)
