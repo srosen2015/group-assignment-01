@@ -132,6 +132,15 @@ def delete_actor(id):
         db.session.delete(actor)
         db.session.commit()
         return redirect(url_for('show_all_actors'))
+    
+    
+   @app.route('/api/actor/<int:id>', methods=['DELETE'])
+def delete_ajax_actor(id):
+    actor =Actor.query.get_or_404(id)
+    db.session.delete(actor)
+    db.session.commit()
+    return jsonify({"id": str(actor.id), "name": actor.actor_name})
+
 
 @app.route('/members')
 def members_page():
