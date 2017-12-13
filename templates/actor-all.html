@@ -39,17 +39,90 @@ All Actors
         <td>{{actor.role}}</td>
         <td>{{actor.movie.title}}</td>
         <td>
+                      <!-- Modal -->
+                   <div class="modal fade" id="{{actor.id}}" tabindex="-1" role="dialog">
+                   <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                   <div class="modal-header">
+                   <h5 class="modal-title">{{actor.name}}</h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                    </div>
+                    <div class="modal-body">
+                  <pre>{{actor.name}}</pre>
+                </div>
+                <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+              </div>
+              </div>
+              </div>
           <a href="/actor-directory/edit/{{actor.id}}" class ="btn btn-success" role="button" aria-disabled="true"> Edit</a>
-        </td>
-        <td>
          <a href="/actor-directory/delete/{{actor.id}}" class ="btn btn-danger" role="button" aria-disabled="true"> Delete</a>
+        <button class="btn btn-warning delete_ajax_btn" data-actor-id={{actor.id}}>Delete Ajax</button>
        </td>
   </tr>
-   {% endfor %}
- </tbody>
+
+  {% endfor%}
+</tbody>
 </table>
 {% else %}
-<h3>There are no actors in the directory yet.</h3>
-{% endif %}
+<h3>There are no actors in the database yet.</h3> {% endif %}
 </div>
-{% endblock %}
+
+{% endblock%}
+
+{% block scripts%}
+{{super()}}
+<script>
+$(document).ready(function() {
+$(".delete_ajax_btn").click(function(event) {
+  var actor_id = $(this).data("actor-id");
+  // get the table row of this song
+  var row = $(this).parent().parent();
+  swal({
+      title: "Are you sure?",
+      // text: "You are going to delete actor" + actor.id + ".",
+      type: "warning",
+      html: true,
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false,
+      showLoaderOnConfirm: true
+    },
+
+    function(isConfirm) {
+      if (isConfirm) {
+        $.ajax({
+            type: "DELETE",
+            url: "/api/actor/" + actor_id,
+            success: function(response) {
+              console.log(response);
+              row.remove(); // remove the table row
+              swal({
+                title: "Deleted!",
+                text: response.name + " has been deleted.",
+                type: "success",
+                timer: 2500,
+                showConfirmButton: false
+              }); // end of SweetAlert
+            } // end of success callback function
+          }) // end of ajax call
+          .fail(function(error) {
+            // console.log(data);
+            swal({
+              title: "Oops...",
+              text: "Deletion failed",
+              type: "error",
+              timer: 2000,
+              showConfirmButton: false
+            }); // end of SweetAlert
+          }); // end of fail callback function
+      } // end of if confirmed block
+    }); // end of confirmed function of SweetAlert
+}); // end of button click event function
+}); // end doc ready
+</script>
+{% endblock%}
