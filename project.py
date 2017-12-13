@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '3028876288'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 # setup SQLAlchemy
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -132,14 +133,12 @@ def delete_actor(id):
         db.session.commit()
         return redirect(url_for('show_all_actors'))
 
-
 @app.route('/api/actor/<int:id>', methods=['DELETE'])
 def delete_ajax_actor(id):
     actor =Actor.query.get_or_404(id)
     db.session.delete(actor)
     db.session.commit()
     return jsonify({"id": str(actor.id), "name": actor.actor_name})
-
 
 @app.route('/members')
 def members_page():
