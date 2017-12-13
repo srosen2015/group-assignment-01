@@ -1,6 +1,6 @@
 
 import os
-from flask import Flask, session, render_template, request, flash, redirect, url_for
+from flask import Flask, session, render_template, request, flash, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -84,7 +84,7 @@ def delete_ajax_movie(id):
     movie = Movie.query.get_or_404(id)
     db.session.delete(movie)
     db.session.commit()
-    return jsonify({"id": str(movie.id), "title": movie.title})
+    return jsonify({"id": str(movie.id), "name": movie.title})
 
 @app.route('/actors')
 def show_all_actors():
